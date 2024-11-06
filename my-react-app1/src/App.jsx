@@ -8,6 +8,7 @@ function MyComponent() {
     <>
       <h2>Re-act</h2>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+      <p>Lorem ipsum dolor sit amet.</p>
     </>
   )
 }
