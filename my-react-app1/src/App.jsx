@@ -1,50 +1,68 @@
 
-function Component() {
-  return <h1>Re-act</h1>
-}
 
 function App() {
+  const person = {
+    s1: {
+      name: "同學1",
+      age: 18,
+    },
+    s2: {
+      name: "同學2",
+      age: 10,
+    },
+    s3: {
+      name: "同學3",
+      age: 20,
+    }
+  }
 
-  // 建立陣列，可以是任何形式的資料=>元件
-  // 同一個陣列中，key屬性的值不可以重複
-  const listItem = [
-    <Component key="0" />,
-    <Component key="1" />,
-    <Component key="2" />
-  ]
-  const listBooks = [
-    { bookName: 'HTML', id: 'book1' },
-    { bookName: 'CSS', id: 'book2' },
-    { bookName: 'JS', id: 'book3' },
-  ]
-  // 過濾出陣列中，CSS之外的書本
-  const filterBooks = listBooks.filter((book) => {
-    // if (book.bookName != 'CSS') {
-    //   return true
-    // }
+  // 多筆資料的物件解構-方法1
+  // const {s1,s2,s3}=person;
 
-    // 三元運算子的判斷式，只能用在單層判斷
-    // 判斷式 ? 條件成立：條件不成立
-    return book.bookName != 'CSS' ? true : false
-  })
+  // 多筆資料的物件解構-方法2：解構+展開...(其餘運算子)
+  // 解構s1，展開s2,s3
+  // {我要的資料,...other}=>不會用到的資料都先放入other(可以自由抓取想要的資料，不受排序限制)
+  const { s1, ...other } = person;
+  // console.log(s1);
+  // console.log(other);
+
+  const person2 = {
+    name: "同學1",
+    age: 10,
+  }
+
+  // 一般寫法
+  // function showName(obj) {
+  //   console.log(obj);
+  //   console.log(obj.name);
+  // }
+
+  // 將物件屬性直接解構給函式參數
+  function showName({ name, age }) {
+    console.log(name);
+    console.log(age);
+  }
+  showName(person2);
 
   return (
     <>
-      {/* 使用陣列方法1 */}
-      {listItem}
-      <hr />
-      {/* 使用陣列方法2=> map() => 此方法可以把一個陣列轉換成另一個陣列 */}
-      {listBooks.map((i) => {
-        return <div key={i.id}>{i.bookName}</div>
-      })}
-      <hr />
-      {/* 使用陣列方法3=> filter() =>過濾陣列資料 */}
-      {/* 顯示過濾後的資料 */}
-      {filterBooks.map((book) => {
-        return <div key={book.id}>{book.bookName}</div>
-      })}
+      <div>{`同學1姓名：${s1.name}`}</div>
+      <div>{`同學3姓名：${other.s3.name}`}</div>
+
+      {/* 
+      <div>第一位同學姓名:{s1.name}</div>
+      <div>第一位同學年齡:{s1.age}</div>
+      <hr/>
+      <div>第二位同學姓名:{s2.name}</div>
+      <div>第二位同學年齡:{s2.age}</div>
+      <hr/>
+      <div>第三位同學姓名:{s3.name}</div>
+      <div>第三位同學年齡:{s3.age}</div>
+       */}
+
     </>
   )
 }
+
 
 export default App
