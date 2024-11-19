@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #888;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-family: sans-serif;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.wrapper {
+    background-color: #333;
+    color: white;
+    width: 450px;
+    padding: 30px;
+    border-radius: 5px;
+
+}
+
+/* 輸入視窗 */
+.create-form {
+    height: 40px;
+    width: 100%;
+    margin: 20px 0;
+    display: flex;
+    border: 2px solid #888;
+    /* border-radius: 3px; */
+}
+.create-form input {
+    width: 100%;
+    height: 100%;
+    padding-left: 10px;
+    background: none;
+    /* border: 2px solid #888;
+    border-radius: 5px 0 0 5px; */
+    border: none;
+    outline: none;
+    transition: 0.5s;
+
+    color: white;
+}
+.create-form input:focus {
+    background-color: #246df4;
+    /* border: 2px solid #246df4; */
+}
+.create-form input::placeholder{
+    color: white;
+}
+.create-form button {
+    width: 50px;
+    height: 100%;
+    border: none;
+    background-color: #888;
+    cursor: pointer;
+    color: white;
+}
+.create-form button:focus {
+    background-color: #246df4;
+} 
+
+/* todo列表 */
+.todo {
+    background-color: #888;
+    color: #333;
+    height: 40px;
+    padding: 0 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+    
+}
