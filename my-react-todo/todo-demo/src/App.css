@@ -19,7 +19,7 @@ body {
     color: white;
     width: 450px;
     padding: 30px;
-    border-radius: 5px;
+    border-radius: 15px;
 
 }
 
@@ -27,10 +27,10 @@ body {
 .create-form {
     height: 40px;
     width: 100%;
-    margin: 20px 0;
+    margin: 30px 0;
     display: flex;
-    border: 2px solid #888;
-    /* border-radius: 3px; */
+    border: 2px solid white;
+    border-radius: 4px;
 }
 .create-form input {
     width: 100%;
@@ -53,28 +53,48 @@ body {
     color: white;
 }
 .create-form button {
-    width: 50px;
+    width: 60px;
     height: 100%;
     border: none;
-    background-color: #888;
+    background-color: white;
     cursor: pointer;
-    color: white;
+    color: #333;
+    transition: 0.5s;
 }
 .create-form button:focus {
     background-color: #246df4;
+    color: white;
 } 
 
 /* todo列表 */
 .todo {
-    background-color: #888;
+    background-color: white;
     color: #333;
     height: 40px;
     padding: 0 10px;
-    margin-top: 10px;
+    margin-top: 15px;
     border-radius: 4px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 1.2rem;
-    
+    font-size: 16px;
+}
+
+.todo p {
+    text-align: left;
+    flex: 5;
+    overflow: hidden;
+    white-space: nowrap;  
+    text-overflow: ellipsis;
+}
+
+.todo .icon {
+    flex: 1;
+}
+
+/* 點擊todo內容的變化：完成或取消 */
+.completed {
+    background-color: #246df4;
+    opacity: .5;
+    text-decoration: line-through 3px white;
 }
