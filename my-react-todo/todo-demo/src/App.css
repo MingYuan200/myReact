@@ -15,7 +15,7 @@ body {
 }
 
 .wrapper {
-    background-color: #333;
+    background-color: #383632;
     color: white;
     width: 450px;
     padding: 30px;
@@ -29,7 +29,7 @@ body {
     width: 100%;
     margin: 30px 0;
     display: flex;
-    border: 2px solid white;
+    border: 2px solid tomato;
     border-radius: 4px;
 }
 .create-form input {
@@ -42,12 +42,12 @@ body {
     border: none;
     outline: none;
     transition: 0.5s;
+    font-size: 14px;
 
     color: white;
 }
 .create-form input:focus {
-    background-color: #246df4;
-    /* border: 2px solid #246df4; */
+    background-color: rgb(124, 68, 58);
 }
 .create-form input::placeholder{
     color: white;
@@ -56,28 +56,31 @@ body {
     width: 60px;
     height: 100%;
     border: none;
-    background-color: white;
+    background: none;
+    border-left: 2px dashed tomato;
+    /* background-color: tomato; */
     cursor: pointer;
-    color: #333;
+    color: white;
     transition: 0.5s;
 }
 .create-form button:focus {
-    background-color: #246df4;
+    background-color: tomato;
     color: white;
 } 
 
 /* todo列表 */
 .todo {
-    background-color: white;
+    background-color: wheat;
     color: #333;
     height: 40px;
-    padding: 0 10px;
+    padding: 0 10px 0 18px;
     margin-top: 15px;
     border-radius: 4px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 16px;
+    font-size: 14px;
+    font-weight: bolder;
 }
 
 .todo p {
@@ -94,7 +97,7 @@ body {
 
 /* 點擊todo內容的變化：完成或取消 */
 .completed {
-    background-color: #246df4;
-    opacity: .5;
-    text-decoration: line-through 3px white;
+    background-color: none;
+    opacity: .4;
+    text-decoration: line-through 3px tomato;
 }
