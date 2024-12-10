@@ -60,3 +60,39 @@ h2 {
     font-size: 18px;
     font-weight: bold;
 }
+
+/*jquery2*/
+.cssAnim1 {
+    border: 1px solid tomato;
+    width: 200px;
+    height: 200px;
+    display: block;
+    overflow: hidden;
+}
+.cssAnim1 img{
+    width: 100%;
+    transition: all .3s linear;
+}
+.imgScale img{
+    transform: scale(1.5);
+}
+/* .gotopWrap{
+    position: relative;
+} */
+.btn {
+    background-color: tomato;
+    padding: 24px;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+}
+.btn-react{
+    border: none;
+    background-color: tomato;
+    padding: 24px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    cursor: pointer;
+}
