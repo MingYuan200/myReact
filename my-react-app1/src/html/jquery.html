@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- jquery主程式 -->
+    <script src="./jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+    <h2>非前端框架下的 jQuery 使用 </h2>
+    <hr>
+
+    <div>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <p>click1</p>
+        <p>click2</p>
+
+        <hr>
+        <p id="p1">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo, dicta.</p>
+        <button id="hide">隱藏</button>
+        <button id="show">顯示</button>
+        <button id="toggle">雙向</button>
+
+        <hr>
+        <h2>摺疊展開</h2>
+        <button id="btn1">
+            按一下展開 =>
+        </button>
+        <button id="btn2">
+            按一下摺疊 =>
+        </button>
+        <button id="btn3">
+            按一下雙向 =>
+        </button>
+        <div id="panel" style="display: none; background-color: bisque; height: 100px; padding: 20px; ">
+            我是展開的面板Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </div>
+        <p>Lorem ipsum dolor sit amet.
+        </p>
+
+        <hr>
+
+        <!-- 最新消息列展開與摺疊 -->
+        <div id="listbox">
+            <div>
+                <h2 class="ph1">NEWS1</h2>
+                <p class="pp1">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla odio dolorem recusandae ullam sed
+                    voluptatem, dolorum quis quidem, modi culpa, maiores tenetur at ad veniam ipsam amet dicta!
+                    Voluptatibus magnam facere, nihil quasi non quia optio eveniet dolorum dolorem repellat illum cum
+                    aspernatur, vitae aut deserunt sunt ratione at fugit saepe. Iste corporis error, velit magnam eos id
+                    fuga animi maxime delectus a inventore, sequi pariatur eligendi quos repellendus ea laboriosam
+                    voluptate blanditiis laborum, ipsum necessitatibus? Labore laborum quaerat architecto.
+                </p>
+            </div>
+            <div>
+                <h2 class="ph2">NEWS2</h2>
+                <p class="pp2">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia aperiam dolorem blanditiis culpa
+                    animi corporis nemo labore, quo, fugit non assumenda reprehenderit ea. Molestias cumque doloribus
+                    perspiciatis dolor consectetur, aliquid temporibus obcaecati pariatur modi? Delectus expedita
+                    officiis eaque laudantium quibusdam corrupti mollitia iure? Dolorum possimus laborum dignissimos
+                    provident nisi excepturi ratione unde perferendis. In deserunt architecto mollitia hic. Dicta,
+                    deleniti ut? Maiores fugiat quae repellendus soluta rem similique dolore maxime id ipsa libero aut
+                    blanditiis enim amet delectus aperiam aliquam, natus laborum possimus doloremque eum eveniet cum
+                    dolorum accusamus harum. Odit commodi sunt sint distinctio aperiam eum, rerum incidunt iusto.
+                </p>
+            </div>
+            <div>
+                <h2 class="ph3">NEWS3</h2>
+                <p class="pp3">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis animi natus repellat debitis
+                    officia, perspiciatis ratione esse vel magni qui maxime praesentium corporis voluptas hic ut, saepe,
+                    dicta mollitia quam neque numquam. Assumenda pariatur, quas quod laudantium, nostrum alias illo
+                    iusto at placeat rerum odit neque eos deserunt non! At.
+                </p>
+            </div>
+        </div>
+
+        <hr>
+        <!-- animate -->
+        <button id="up">上</button>
+        <button id="zoom">放大</button>
+        <button id="zoom3">雙向</button>
+        <button id="color">變色</button>
+        <div class="box2">
+            <p>123</p>
+        </div>
+
+    </div>
+
+    <style>
+        .box2 {
+            background-color: rgb(81, 41, 150);
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 150px;
+        }
+        .box2 p{
+            background-color: rgb(81, 142, 255);
+            position: absolute;
+            padding: 50px;
+
+        }
+
+        #listbox {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 70%;
+        }
+
+        #listbox h2 {
+            cursor: pointer;
+            background-color: burlywood;
+            margin: 0;
+            padding: 20px;
+            border-radius: 10px 10px 0 0;
+        }
+
+        #listbox p {
+            display: none;
+            padding: 20px;
+            background-color: burlywood;
+            margin: 0;
+            border-radius: 0 0 10px 10px;
+            border-top: 2px dashed white;
+        }
+    </style>
+
+    <script>
+        // 動畫
+        $(function () {
+            $('#up').click(function () {
+                $('.box2 p').animate({ top: '-50px' });
+            });
+            $('#zoom3').click(function () {
+                $('.box2').animate({
+                    width:'toggle',
+                    // height:'toggle'
+                });
+            });
+            $('#color').click(function () {
+                $('.box2').css({
+                    "background-color":"#666",
+                    "color":"white",
+                    "transition":".5s",
+                    "transform":"scale(1.5)"
+                });
+            });
+
+        });
+
+        // 最新消息
+        $(function () {
+            $('.ph1').click(function () {
+                $('.pp1').slideToggle(500);
+                $('.pp2,.pp3').slideUp(500);
+            });
+            $('.ph2').click(function () {
+                $('.pp2').slideToggle(500);
+                $('.pp1,.pp3').slideUp(500);
+            });
+            $('.ph3').click(function () {
+                $('.pp3').slideToggle(500);
+                $('.pp2,.pp1').slideUp(500);
+            });
+        });
+
+        $(function () {
+            // 展開
+            $('#btn1').click(function () {
+                $('#panel').slideDown(500);
+            });
+            // 摺疊
+            $('#btn2').click(function () {
+                $('#panel').slideUp(500);
+            });
+            // 摺疊展開
+            $('#btn3').click(function () {
+                $('#panel').slideToggle(500);
+            });
+        });
+
+        $(function () {
+            // 隱藏
+            $('#hide').click(function () {
+                $('#p1').hide(500);
+            });
+            // 顯示
+            $('#show').click(function () {
+                $('#p1').show(500);
+            });
+            // 隱藏顯示
+            $('#toggle').click(function () {
+                $('#p1').toggle(300);
+            });
+        });
+
+        // 標準法
+        $(document).ready(function () {
+            // 程式撰寫區
+            $('p').click(function () {
+                $(this).hide();
+            });
+        });
+
+        // 簡寫法
+        // $(function () {
+        //     // 程式撰寫區
+        //     $('h2').click(function () {
+        //         $(this).hide();
+        //     });
+        // });
+    </script>
+
+
+</body>
+
+</html>
