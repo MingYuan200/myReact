@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>上下輪播-文字</title>
+    <link rel="stylesheet" href="./css/textslider.css">
+</head>
+<body>
+    <div class="slideText">
+        <ul>
+            <li>NEWS 01</li>
+            <li>NEWS 02</li>
+            <li>NEWS 03</li>
+            <li>NEWS 04</li>
+            <li>NEWS 05</li>
+            <li>NEWS 06</li>
+            <li>NEWS 07</li>
+            <li>NEWS 08</li>
+            <li>NEWS 09</li>
+            <li>NEWS 10</li>
+        </ul>
+    </div>
+
+    <script src="./js/jquery-1.11.3.min.js"></script>
+    <script src="./js/jquery.textslider.js"></script>
+    <script>
+        $(function(){
+            $('.slideText').textslider({
+                // 捲動方向 (捲動方向: scrollUp向上, scrollDown向下)
+                direction: 'scrollUp',
+                // 一次捲動幾列
+                scrollNum : 3,
+                // 捲動速度
+                scrollSpeed : 800,
+                // 捲動間隔
+                pause : 1000,
+            });
+        });
+    </script>
+</body>
+</html>
