@@ -96,3 +96,27 @@ h2 {
     bottom: 0;
     cursor: pointer;
 }
+
+a{
+    text-decoration: underline;
+    color: red;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.ttpShow {
+    display: none;
+}
+
+#ttpPanel {
+    padding: 15px;
+    width: 200px;
+    text-align: left;
+    border: 3px solid #999;
+    background-color: white;
+    position: absolute;
+    z-index: 99;
+    display: none;
+}
