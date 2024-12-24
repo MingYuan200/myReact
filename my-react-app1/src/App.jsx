@@ -1,66 +1,109 @@
-import { useRef, useEffect, useState } from 'react';
+import { useState } from "react";
+import { AnimatePresence, motion } from "motion/react"
+import { FaMinusCircle, FaPlusCircle } from "react-icons/fa";
 
 
 export default function App() {
-  // 建立背景圖片的路徑陣列物件
-  const slides = [
-    { url: "./images2/07.jpg", text: "photo-01" },
-    { url: "./images2/02.jpg", text: "photo-02" },
-    { url: "./images2/03.jpg", text: "photo-03" },
-    { url: "./images2/04.jpg", text: "photo-04" },
-    { url: "./images2/05.jpg", text: "photo-05" },
-    { url: "./images2/06.jpg", text: "photo-06" },
-  ];
 
-  // 目前要顯示的圖片編號
-  const [currentIndex, setCurrentIndex] = useState(0);
-  // 下一張
-  const nextSlides = () => {
-    // 取得前一張的索引編號，檢查是否為最後一的編號
-    // 是 => 回到第一張(編號0)
-    // 否 => 跳下一張(編號+1)
-    setCurrentIndex((prevIndex) => (prevIndex === slides.length - 1 ? 0 : prevIndex + 1))
-  }
+  const [activeQuestionId, setActiveQuestionId] = useState(null);
 
-  // 自動輪播
-  // 當currentIndex改變時，會觸發useEffect
-  useEffect(() => {
-    // 每3秒呼叫nextSlides()換下一張圖
-    const autoplay = setInterval(() => {
-      nextSlides();
-    }, 3000);
+  const questions = [
+    {
+      id: 1,
+      question: "題目1",
+      ans: "答案1Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint vero error totam non quis. In obcaecati, doloribus quibusdam est consequatur asperiores ea nam delectus suscipit inventore dignissimos, vero a corporis eligendi facere, fugit numquam voluptatum quo culpa doloremque possimus. Magnam autem, minus in consectetur animi reiciendis sequi eos omnis perferendis?"
+    },
+    {
+      id: 2,
+      question: "題目2",
+      ans: "答案2"
+    },
+    {
+      id: 3,
+      question: "題目3",
+      ans: "答案3"
+    }
+  ]
 
-    // 每3秒後，移除autoplay => 才能取得最新的編號
-    return () => clearInterval(autoplay);
-  }, [currentIndex]);
-
-
-
-
-  // console.log(slides);
   return (
     <>
       <div className="wrapper" style={{
-        border: "1px solid red",
-        maxWidth: "100%",
-        height: "90vh",
-        margin: "auto",
+        backgroundColor: "black",
+        maxWidth: "100vw",
+        height: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        color: "#ccc",
       }}>
-        {/* 滿版背景輪播區 */}
-        <div style={{
-          backgroundImage: `url(${slides[currentIndex].url})`,
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-          height: "100%",
-          width: "100%",
-          display:"flex",
-          flexDirection:"column",
-          justifyContent:"flex-end",
-          alignContent:"flex-end",
-        }}>
-          <h2 style={{color:"#fff", textAlign:"center", padding:"12px"}}>{slides[currentIndex].text}</h2>
-        </div>
+        {/* FAQ */}
+        <div className="faq" style={{
+          width: "70%",
+          backgroundColor: "grey",
+          padding: "10px",
+          borderRadius: "8px",
 
+        }}>
+          <h2 style={{
+            padding: "0", margin: "0", textAlign: "center", marginBottom: "10px"
+          }}>FAQ-Accordion
+          </h2>
+          {
+            // 帶出陣列資料
+            questions.map((q) => {
+              return (
+                <div key={q.id} style={{ marginBottom: "5px" }}>
+                  {/* QA按鈕 */}
+                  <button style={{
+                    width: "100%",
+                    textAlign: "left",
+                    borderRadius: "5px",
+                    border: "none",
+                    outline: "none",
+                    padding: "10px",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    fontSize:"1rem",
+                  }}
+                    onClick={() => setActiveQuestionId(activeQuestionId === q.id ? null : q.id)}
+                  >
+                    {/* 帶出題目 */}
+                    {q.question}
+
+                    {/* icon */}
+                    {
+                      activeQuestionId === q.id ? <FaMinusCircle /> : <FaPlusCircle />
+                    }
+                  </button>
+
+                  {/* ans摺疊動畫:motion => https://motion.dev/docs/react-scroll-animations */}
+                  <AnimatePresence>
+                    {
+                      // 作用中的id與點擊的id相同時
+                      activeQuestionId===q.id && (
+                        <motion.div 
+                        // 初始化
+                        initial={{opacity:0,height:0}}
+                        // 展開的動畫
+                        animate={{opacity:1,height:"auto"}}
+                        // 收起來的動畫
+                        exit={{opacity:0,height:0}}
+                        style={{padding:"10px",color:"#fff",fontSize:"1rem"}}
+                        >
+                          {/* 答案 */}
+                          {q.ans}
+                        </motion.div>
+                      )
+                    }
+                  </AnimatePresence>
+                </div>
+              )
+            })
+          }
+
+
+        </div>
       </div>
 
     </>
