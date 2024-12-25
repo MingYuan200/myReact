@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>localStorage應用</h2>
+    <p>第<span id="count"></span>次造訪網頁</p>
+    <script>
+        if (localStorage.visit) {
+            console.log("有來過");
+            console.log(localStorage.visit + 1); //尚未轉換成數值
+            console.log(parseInt(localStorage.visit) + 1); //已經轉換成數值型態=>可以四則運算
+            localStorage.visit = parseInt(localStorage.visit) + 1;
+            document.getElementById("count").textContent = localStorage.visit;
+        } else {
+            console.log("沒來過");
+            // 寫入visit
+            localStorage.visit = 0;
+        }
+    </script>
+</body>
+
+</html>
