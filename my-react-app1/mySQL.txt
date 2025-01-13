@@ -1,0 +1,11 @@
+/* 計算BMI */
+SELECT * ,round(cWeight/ (cHeight*cHeight)*10000 ,1)as 'BMI'
+FROM `students` 
+order by cSex
+
+/* 數值的次方 => Pow(值,幾次方)  */
+/* Pow(cHeight/100,2) */
+
+/* 奇怪datedif找不到 */
+SELECT cID,cName,cBirthday,cSex, 2025-year(cBirthday) as '不準的生日'
+FROM `students` 
